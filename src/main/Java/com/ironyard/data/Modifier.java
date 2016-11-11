@@ -9,7 +9,7 @@ import javax.persistence.Id;
  * Created by Tom on 11/10/16.
  */
 @Entity
-public class Modifiers {
+public class Modifier {
     private int inspiration;
     private int proficiency;
     private int savingStr;
@@ -20,9 +20,9 @@ public class Modifiers {
     private int savingChar;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
-    public Modifiers() {
+    public Modifier() {
     }
 
     public int getInspiration() {
@@ -89,11 +89,11 @@ public class Modifiers {
         this.savingChar = savingChar;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 }

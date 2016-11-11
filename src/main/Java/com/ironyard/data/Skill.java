@@ -9,14 +9,14 @@ import javax.persistence.Id;
  * Created by Tom on 11/9/16.
  */
 @Entity
-public class Skills {
+public class Skill {
     private String description;
     private String value;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public Skills(String description, String value) {
+    public Skill(String description, String value) {
         this.description = description;
         this.value = value;
     }
@@ -45,7 +45,7 @@ public class Skills {
         this.description = description;
 
     }
-    public Skills(){
+    public Skill(){
 
     }
 }

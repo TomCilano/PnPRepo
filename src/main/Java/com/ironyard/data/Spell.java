@@ -9,13 +9,13 @@ import javax.persistence.Id;
  * Created by Tom on 11/9/16.
  */
 @Entity
-public class Spells {
+public class Spell {
     private String description;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public Spells(String description) {
+    public Spell(String description) {
         this.description = description;
     }
 
@@ -35,7 +35,7 @@ public class Spells {
         this.id = id;
     }
 
-    public Spells(){
+    public Spell(){
 
     }
 }

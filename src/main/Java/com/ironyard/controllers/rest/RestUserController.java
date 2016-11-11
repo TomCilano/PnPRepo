@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
  * Created by Tom on 11/8/16.
  */
 @RestController
-@RequestMapping(path = "/rest/user")
-public class UserController {
+@RequestMapping(path = "/rest")
+public class RestUserController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -20,7 +20,6 @@ public class UserController {
 
     /**
      * Saves a userObj
-     *
      * @param aUserObj
      * @return
      */
@@ -34,8 +33,7 @@ public class UserController {
     }
 
     /**
-     * get a user by its unique Id
-     *
+     * Get a user by it's unique Id
      * @param id
      * @return
      */
@@ -47,6 +45,11 @@ public class UserController {
         return foundOne;
     }
 
+    /**
+     * Update a user
+     * @param aUserObj
+     * @return
+     */
     @RequestMapping(value = "update", method = RequestMethod.PUT)
     private UserObj update(@RequestBody UserObj aUserObj) {
         log.debug("Updating " + aUserObj);
@@ -55,11 +58,17 @@ public class UserController {
         log.debug("Sucseffully updated " + aUserObj);
         return foundOne;
     }
+
+    /**
+     * deletes a user by it's unique Id
+     * @param aUserObj
+     * @return
+     */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
     private UserObj delete(@RequestParam UserObj aUserObj){
         userRepository.delete(aUserObj);
         UserObj deletedOne = userRepository.findOne(aUserObj.getId());
-
         return deletedOne;
     }
+
 }

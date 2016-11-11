@@ -9,7 +9,7 @@ import javax.persistence.Id;
  * Created by Tom on 11/10/16.
  */
 @Entity
-public class MainStats {
+public class MainStat {
     private int strength;
     private int dexterity;
     private int constitution;
@@ -18,9 +18,9 @@ public class MainStats {
     private int charisma;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
-    public MainStats() {
+    public MainStat() {
     }
 
     public int getStrength() {
@@ -71,11 +71,11 @@ public class MainStats {
         this.charisma = charisma;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 }
