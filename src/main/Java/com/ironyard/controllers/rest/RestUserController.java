@@ -6,12 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.RequestScope;
 
 /**
  * Created by Tom on 11/8/16.
  */
 @RestController
-@RequestMapping(path = "/rest")
+@RequestMapping(path = "/rest/user")
 public class RestUserController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -20,6 +21,7 @@ public class RestUserController {
 
     /**
      * Saves a userObj
+     *
      * @param aUserObj
      * @return
      */
@@ -34,6 +36,7 @@ public class RestUserController {
 
     /**
      * Get a user by it's unique Id
+     *
      * @param id
      * @return
      */
@@ -47,6 +50,7 @@ public class RestUserController {
 
     /**
      * Update a user
+     *
      * @param aUserObj
      * @return
      */
@@ -61,14 +65,22 @@ public class RestUserController {
 
     /**
      * deletes a user by it's unique Id
+     *
      * @param aUserObj
      * @return
      */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-    private UserObj delete(@RequestParam UserObj aUserObj){
+    private UserObj delete(@RequestParam UserObj aUserObj) {
         userRepository.delete(aUserObj);
         UserObj deletedOne = userRepository.findOne(aUserObj.getId());
         return deletedOne;
     }
 
+    @RequestMapping(value = "list", method = RequestMethod.GET)
+    private Iterable<UserObj> listAll() {
+
+
+        Iterable<UserObj> foundAll = userRepository.findAll();
+        return foundAll;
+    }
 }

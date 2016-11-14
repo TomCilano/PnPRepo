@@ -34,7 +34,7 @@ public class Application {
                 .groupName("user-api")
                 .apiInfo(apiInfoUser())
                 .select()
-                .paths(regex("/rest.*"))
+                .paths(regex("/rest/user.*"))
                 .build().globalOperationParameters(
                         newArrayList(new ParameterBuilder()
                                 .name("x-authorization-key")
@@ -49,7 +49,7 @@ public class Application {
     public ApiInfo apiInfoUser() {
         return new ApiInfoBuilder()
                 .title("UserObj API")
-                .description("This is where you can access the user data model and perform CRUD operations on them."+"\n"+
+                .description("This is where you can access the users data model and perform CRUD operations on them." + "\n" +
                         "test token = hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
@@ -58,4 +58,7 @@ public class Application {
                 .version(".1")
                 .build();
     }
+    @Bean
+    public Docket message
 }
+

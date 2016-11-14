@@ -22,18 +22,6 @@ public class crud {
     @Autowired
     private UserRepository userRepository;
 
-    @Test
-    public void getUserbyId() throws Exception{
-
-        //Create a user with an Id
-        UserObj testUser = userRepository.save(new UserObj());
-
-        //find that user
-       Object x = userRepository.findOne(testUser.getId());
-
-        Assert.assertNotNull(x);
-
-    }
 
     @Test
     public static void  main (String[] args){

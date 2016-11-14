@@ -14,7 +14,7 @@ public class CurrentState {
     private int initiative;
     private int speed;
     private int maxHitPoints;
-    private int cirrentHitPoints;
+    private int currentHitPoints;
     private int hitDice;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,12 +55,12 @@ public class CurrentState {
         this.maxHitPoints = maxHitPoints;
     }
 
-    public int getCirrentHitPoints() {
-        return cirrentHitPoints;
+    public int getCurrentHitPoints() {
+        return currentHitPoints;
     }
 
-    public void setCirrentHitPoints(int cirrentHitPoints) {
-        this.cirrentHitPoints = cirrentHitPoints;
+    public void setCurrentHitPoints(int currentHitPoints) {
+        this.currentHitPoints = currentHitPoints;
     }
 
     public int getHitDice() {

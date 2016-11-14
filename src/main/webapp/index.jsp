@@ -10,7 +10,7 @@ TEST
 </h2>
 <div class="row marketing">
     <div class="col-lg-6">
-        <h4>Here's your list of Favorite Movies</h4>
+        <h4></h4>
 
         <p/>
 
