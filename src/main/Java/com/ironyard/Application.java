@@ -81,12 +81,39 @@ public class Application {
     public ApiInfo apiInfoMessage() {
         return new ApiInfoBuilder()
                 .title("Message API")
-                .description("This is where you can update messages by Id-------Here is a testing token hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
+                .description("This is where you can perform CRUD operations on  'messages' by Id------->Here is a testing token:  hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
                 .licenseUrl("")
                 .version(".1")
+                .build();
+
+    }
+    @Bean
+    public Docket storyApi(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("story api")
+                .apiInfo(apiInfoStory())
+                .select()
+                .paths(regex("/rest/story.*"))
+                .build().globalOperationParameters(
+                        newArrayList(new ParameterBuilder()
+                                .name("x-authorization-key")
+                                .description("API Authorization Key")
+                                .modelRef(new ModelRef("string"))
+                                .parameterType("header")
+                                .required(true)
+                                .build()));
+
+    }
+    @Bean
+    public ApiInfo apiInfoStory(){
+        return new ApiInfoBuilder()
+                .title("Story API")
+                .description("This is where you can perform CRUD operations on 'Story' by id ------->Here is a testing token:  hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
+                .contact("TomCilano")
+                .license("")
                 .build();
 
     }

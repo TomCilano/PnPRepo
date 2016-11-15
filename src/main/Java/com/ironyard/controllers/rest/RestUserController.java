@@ -70,16 +70,23 @@ public class RestUserController {
      */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
     private UserObj delete(@RequestParam UserObj aUserObj) {
+        log.debug("deleting "+ aUserObj);
         userRepository.delete(aUserObj);
         UserObj deletedOne = userRepository.findOne(aUserObj.getId());
+        log.debug(aUserObj + " successfully deleted!");
         return deletedOne;
     }
 
+    /**
+     * Lists all serObjs
+     * @return
+     */
     @RequestMapping(value = "list", method = RequestMethod.GET)
     private Iterable<UserObj> listAll() {
 
-
+        log.debug("List all users" );
         Iterable<UserObj> foundAll = userRepository.findAll();
+        log.debug("users found");
         return foundAll;
     }
 }

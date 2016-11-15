@@ -27,7 +27,7 @@ public class RestMessageController {
      * @param aUserMessage
      * @return saved message
      */
-    @RequestMapping(value ="/save_message", method = RequestMethod.POST)
+    @RequestMapping(value ="/saveMessage", method = RequestMethod.POST)
     private UserMessage save(@RequestBody UserMessage aUserMessage){
         log.debug("creating a user message...");
 
@@ -66,8 +66,17 @@ public class RestMessageController {
         return foundOne;
 
     }
+
+    /**
+     * Lists messages by page/size
+     * @param page
+     * @param size
+     * @param sortby
+     * @param direction
+     * @return
+     */
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public Iterable<UserMessage> listAll(@RequestParam("page") Integer page,
+    public Iterable<UserMessage> listByPage(@RequestParam("page") Integer page,
                                          @RequestParam("size") Integer size,
                                          @RequestParam(value = "sortby", required = false) String sortby,
                                          @RequestParam(value = "dir", required = false) Sort.Direction direction) {
@@ -90,10 +99,31 @@ public class RestMessageController {
 
         return found;
     }
+
+    /**
+     * List all Messages
+     * @return
+     */
+    @RequestMapping(value = "listAll", method = RequestMethod.GET)
+    private Iterable<UserMessage> listAll() {
+
+        log.debug("List all messages" );
+        Iterable<UserMessage> foundAll = messageRepository.findAll();
+        log.debug("messages found");
+        return foundAll;
+    }
+    /**
+     * Deletes user by their unique id
+     * @param userMessage
+     * @return
+     */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
     private UserMessage delete(@RequestParam UserMessage userMessage) {
+        log.debug("deleting "+ userMessage.getId());
         messageRepository.delete(userMessage);
         UserMessage deletedOne = messageRepository.findOne(userMessage.getId());
+        log.debug("");
         return deletedOne;
     }
+
 }

@@ -7,25 +7,25 @@ import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 /**
- * Created by Tom on 11/14/16.
+ * Created by Tom on 11/15/16.
  */
 @Entity
-public class UserMessage {
-    @Size(max = 1337)
-    private String message;
+public class Story {
+    @Size(max = 300000)
+    private String story;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public UserMessage() {
+    public Story() {
     }
 
-    public String getMessage() {
-        return message;
+    public String getStory() {
+        return story;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setStory(String story) {
+        this.story = story;
     }
 
     public long getId() {
