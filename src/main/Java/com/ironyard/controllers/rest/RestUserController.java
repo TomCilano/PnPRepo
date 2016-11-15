@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.RequestScope;
 
 /**
  * Created by Tom on 11/8/16.
@@ -64,7 +63,7 @@ public class RestUserController {
     }
 
     /**
-     * deletes a user by it's unique Id
+     * Deletes a user by it's unique Id
      *
      * @param aUserObj
      * @return

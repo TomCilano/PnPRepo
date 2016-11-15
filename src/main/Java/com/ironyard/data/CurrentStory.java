@@ -9,13 +9,13 @@ import javax.persistence.Id;
  * Created by Tom on 11/14/16.
  */
 @Entity
-public class currentStory {
+public class CurrentStory {
     private String story;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public currentStory() {
+    public CurrentStory() {
     }
 
     public String getStory() {
