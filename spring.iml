@@ -94,6 +94,7 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-devtools:1.4.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.4.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.4.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:1.4.193" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-ui:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spring-web:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger2:2.6.0" level="project" />
