@@ -37,12 +37,15 @@ public class RestStoryController {
         private Story get(@PathVariable long id ){
             log.debug("getthing message by id# " + id);
             Story found = storyRepository.findOne(id);
-            log.debug("got id#" + id);
+            log.debug("got story with id#" + id);
             return found;
         }
 
-
-        @RequestMapping(value = "edit", method = RequestMethod.PUT)
+    /**
+     *
+     * THIS IS BROKEN
+     */
+    @RequestMapping(value = "edit", method = RequestMethod.PUT)
         private Story edit(@RequestBody Story story){
 
             storyRepository.save(story);

@@ -54,8 +54,9 @@ public class RestUserController {
      * @return
      */
     @RequestMapping(value = "update", method = RequestMethod.PUT)
-    private UserObj update(@RequestBody UserObj aUserObj) {
+    private UserObj update(@RequestParam UserObj aUserObj) {
         log.debug("Updating " + aUserObj);
+        userRepository.findOne(aUserObj.getId());
         userRepository.save(aUserObj);
         UserObj foundOne = userRepository.findOne(aUserObj.getId());
         log.debug("Sucseffully updated " + aUserObj);
@@ -65,15 +66,15 @@ public class RestUserController {
     /**
      * Deletes a user by it's unique Id
      *
-     * @param aUserObj
+     * @param aUserObjId
      * @return
      */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-    private UserObj delete(@RequestParam UserObj aUserObj) {
-        log.debug("deleting "+ aUserObj);
-        userRepository.delete(aUserObj);
-        UserObj deletedOne = userRepository.findOne(aUserObj.getId());
-        log.debug(aUserObj + " successfully deleted!");
+    private UserObj delete(@RequestParam UserObj aUserObjId) {
+        log.debug("deleting "+ aUserObjId);
+        userRepository.delete(aUserObjId);
+        UserObj deletedOne = userRepository.findOne(aUserObjId.getId());
+        log.debug(aUserObjId + " successfully deleted!");
         return deletedOne;
     }
 

@@ -23,6 +23,7 @@ public class CurrentState {
     public CurrentState() {
     }
 
+
     public int getArmorClass() {
         return armorClass;
     }

@@ -15,6 +15,7 @@ public class UserObj {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+
     /**
      * User Attributes (Many to Many relationships)
      */
@@ -38,6 +39,7 @@ public class UserObj {
     private Set<Tenet> tenetsSet;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserInformation> userInformationSet;
+
 
 
 

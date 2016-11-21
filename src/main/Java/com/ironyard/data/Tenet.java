@@ -10,10 +10,12 @@ import javax.persistence.Id;
  */
 @Entity
 public class Tenet {
-    private String personalitTraits;
+    private String personalityTraits;
     private String ideals;
     private String bonds;
     private String flaws;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -21,12 +23,12 @@ public class Tenet {
     public Tenet() {
     }
 
-    public String getPersonalitTraits() {
-        return personalitTraits;
+    public String getPersonalityTraits() {
+        return personalityTraits;
     }
 
-    public void setPersonalitTraits(String personalitTraits) {
-        this.personalitTraits = personalitTraits;
+    public void setPersonalityTraits(String personalityTraits) {
+        this.personalityTraits = personalityTraits;
     }
 
     public String getIdeals() {
