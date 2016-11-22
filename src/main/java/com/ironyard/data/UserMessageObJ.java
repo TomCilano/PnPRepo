@@ -1,13 +1,15 @@
 package com.ironyard.data;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
+
 
 /**
  * Created by Tom on 11/14/16.
@@ -19,7 +21,7 @@ public class UserMessageObJ {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @DateTimeFormat
+//    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date date;
 
     public UserMessageObJ() {

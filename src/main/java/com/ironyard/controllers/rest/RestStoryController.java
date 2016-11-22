@@ -55,7 +55,7 @@ public class RestStoryController {
 
         }
 
-        @RequestMapping(value = "list", method = RequestMethod.GET)
+        @RequestMapping(value = "listPageSize", method = RequestMethod.GET)
         public Iterable<StoryObj> listByPage(@RequestParam("page") Integer page,
                                              @RequestParam("size") Integer size,
                                              @RequestParam(value = "sortby", required = false) String sortby,

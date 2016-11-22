@@ -22,11 +22,6 @@ TEST
             </thead>
             <tbody>
 
-            <c:forEach items="${users}" var="allUsers">
-                <tr>
-                    <td><c:out value="${allUsers.userName}"/></td>
-                </tr>
-            </c:forEach>
             </tbody>
         </table>
 

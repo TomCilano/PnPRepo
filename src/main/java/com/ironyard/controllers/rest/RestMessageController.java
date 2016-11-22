@@ -5,9 +5,17 @@ import com.ironyard.repos.MessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Tom on 11/14/16.
@@ -32,6 +40,9 @@ public class RestMessageController {
 
         messageRepository.save(aUserMessageObJ);
         UserMessageObJ foundOne = messageRepository.findOne(aUserMessageObJ.getId());
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
 
         log.debug("user message saved.");
         return foundOne;
@@ -74,7 +85,7 @@ public class RestMessageController {
      * @param direction
      * @return
      */
-    @RequestMapping(value = "list", method = RequestMethod.GET)
+    @RequestMapping(value = "listPageSize", method = RequestMethod.GET)
     public Iterable<UserMessageObJ> listByPage(@RequestParam("page") Integer page,
                                                @RequestParam("size") Integer size,
                                                @RequestParam(value = "sortby", required = false) String sortby,
@@ -124,5 +135,9 @@ public class RestMessageController {
         log.debug("");
         return deletedOne;
     }
-
+//    @RequestMapping(value="getByDate" , method=RequestMethod.GET)
+//    public @ResponseBody UserMessageObJ fetchResult(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate) {
+//        log.debug("Fetching message from date "+ fromDate );
+//        UserMessageObJ x = messageRepository;
+//    }
 }
