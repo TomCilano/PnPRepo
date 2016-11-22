@@ -25,6 +25,7 @@ import java.util.Date;
 
 public class RestMessageController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
+    public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyy hh:mm");
 
     @Autowired
     private MessageRepository messageRepository;
@@ -41,8 +42,17 @@ public class RestMessageController {
         messageRepository.save(aUserMessageObJ);
         UserMessageObJ foundOne = messageRepository.findOne(aUserMessageObJ.getId());
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        /*
+         *public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyy hh:mm");
 
+        Date date = new Date();
+        System.out.println(sdf.format(date));
+
+         */
+//
+//        Date date = new Date();
+//
+//        foundOne.setDate(sdf.format(date));
 
         log.debug("user message saved.");
         return foundOne;

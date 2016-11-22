@@ -21,7 +21,7 @@ public class UserMessageObJ {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-//    @JsonFormat(pattern = "yyyy/MM/dd")
+    @JsonFormat(pattern = "MM/dd/yyyy hh:mm")
     private Date date;
 
     public UserMessageObJ() {
