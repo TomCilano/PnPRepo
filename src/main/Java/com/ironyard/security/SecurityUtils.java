@@ -39,13 +39,13 @@ public class SecurityUtils {
         Cipher cipher = Cipher.getInstance("Blowfish");
         cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
 
-        // build my secret UserMessage
+        // build my secret UserMessageObJ
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Calendar cal = Calendar.getInstance();
         String date = dateFormat.format(cal.getTime());
         String mySecretMessage = String.format("%s:%s", date, SECRET);
 
-        // do the encrypt UserMessage
+        // do the encrypt UserMessageObJ
         byte[] hasil = cipher.doFinal(mySecretMessage.getBytes());
         return new BASE64Encoder().encode(hasil);
     }

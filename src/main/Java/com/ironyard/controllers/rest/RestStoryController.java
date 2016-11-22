@@ -1,7 +1,6 @@
 package com.ironyard.controllers.rest;
 
-import com.ironyard.data.Story;
-import com.ironyard.data.UserMessage;
+import com.ironyard.data.StoryObj;
 import com.ironyard.repos.StoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +21,11 @@ public class RestStoryController {
         private StoryRepository storyRepository;
 
         @RequestMapping(value ="/save_story", method = RequestMethod.POST)
-        private Story save(@RequestBody Story story){
+        private StoryObj save(@RequestBody StoryObj storyObj){
             log.debug("creating a user message...");
 
-            storyRepository.save(story);
-            Story foundOne = storyRepository.findOne(story.getId());
+            storyRepository.save(storyObj);
+            StoryObj foundOne = storyRepository.findOne(storyObj.getId());
 
             log.debug("user message saved.");
             return foundOne;
@@ -34,9 +33,9 @@ public class RestStoryController {
 
 
         @RequestMapping(value ="get{id}", method = RequestMethod.GET)
-        private Story get(@PathVariable long id ){
+        private StoryObj get(@PathVariable long id ){
             log.debug("getthing message by id# " + id);
-            Story found = storyRepository.findOne(id);
+            StoryObj found = storyRepository.findOne(id);
             log.debug("got story with id#" + id);
             return found;
         }
@@ -46,18 +45,18 @@ public class RestStoryController {
      * THIS IS BROKEN
      */
     @RequestMapping(value = "edit", method = RequestMethod.PUT)
-        private Story edit(@RequestBody Story story){
+        private StoryObj edit(@RequestBody StoryObj storyObj){
 
-            storyRepository.save(story);
+            storyRepository.save(storyObj);
 
-            Story foundOne = storyRepository.findOne(story.getId());
+            StoryObj foundOne = storyRepository.findOne(storyObj.getId());
 
             return foundOne;
 
         }
 
         @RequestMapping(value = "list", method = RequestMethod.GET)
-        public Iterable<Story> listByPage(@RequestParam("page") Integer page,
+        public Iterable<StoryObj> listByPage(@RequestParam("page") Integer page,
                                              @RequestParam("size") Integer size,
                                              @RequestParam(value = "sortby", required = false) String sortby,
                                              @RequestParam(value = "dir", required = false) Sort.Direction direction) {
@@ -75,7 +74,7 @@ public class RestStoryController {
             }
             Sort s = new Sort(direction, sortby);
             PageRequest pr = new PageRequest(page, size, s);
-            Iterable<Story> found = storyRepository.findAll(pr);
+            Iterable<StoryObj> found = storyRepository.findAll(pr);
             log.debug(String.format("End listAll: %s", found));
 
             return found;
@@ -86,18 +85,18 @@ public class RestStoryController {
      * @return
      */
     @RequestMapping(value = "listAll", method = RequestMethod.GET)
-    private Iterable<Story> listAll() {
+    private Iterable<StoryObj> listAll() {
 
         log.debug("List all messages" );
-        Iterable<Story> foundAll = storyRepository.findAll();
+        Iterable<StoryObj> foundAll = storyRepository.findAll();
         log.debug("messages found");
         return foundAll;
     }
 
         @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-        private Story delete(@RequestParam Story story) {
-            storyRepository.delete(story);
-            Story deletedOne = storyRepository.findOne(story.getId());
+        private StoryObj delete(@RequestParam StoryObj storyObj) {
+            storyRepository.delete(storyObj);
+            StoryObj deletedOne = storyRepository.findOne(storyObj.getId());
             return deletedOne;
         }
     }

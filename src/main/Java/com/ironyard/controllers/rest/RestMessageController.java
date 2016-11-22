@@ -1,7 +1,6 @@
 package com.ironyard.controllers.rest;
 
-import com.ironyard.data.UserMessage;
-import com.ironyard.data.UserObj;
+import com.ironyard.data.UserMessageObJ;
 import com.ironyard.repos.MessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,15 +23,15 @@ public class RestMessageController {
 
     /**
      * Save a message
-     * @param aUserMessage
+     * @param aUserMessageObJ
      * @return saved message
      */
     @RequestMapping(value ="/saveMessage", method = RequestMethod.POST)
-    private UserMessage save(@RequestBody UserMessage aUserMessage){
+    private UserMessageObJ save(@RequestBody UserMessageObJ aUserMessageObJ){
         log.debug("creating a user message...");
 
-        messageRepository.save(aUserMessage);
-        UserMessage foundOne = messageRepository.findOne(aUserMessage.getId());
+        messageRepository.save(aUserMessageObJ);
+        UserMessageObJ foundOne = messageRepository.findOne(aUserMessageObJ.getId());
 
         log.debug("user message saved.");
         return foundOne;
@@ -44,24 +43,24 @@ public class RestMessageController {
      * @return
      */
     @RequestMapping(value ="get{id}", method = RequestMethod.GET)
-    private UserMessage get(@PathVariable long id ){
+    private UserMessageObJ get(@PathVariable long id ){
         log.debug("getthing message by id# " + id);
-        UserMessage found = messageRepository.findOne(id);
+        UserMessageObJ found = messageRepository.findOne(id);
         log.debug("got id#" + id);
         return found;
     }
 
     /**
      * edits a message
-     * @param userMessage
+     * @param userMessageObJ
      * @return
      */
     @RequestMapping(value = "edit", method = RequestMethod.PUT)
-    private UserMessage edit(@RequestBody UserMessage userMessage){
+    private UserMessageObJ edit(@RequestBody UserMessageObJ userMessageObJ){
 
-        messageRepository.save(userMessage);
+        messageRepository.save(userMessageObJ);
 
-        UserMessage foundOne = messageRepository.findOne(userMessage.getId());
+        UserMessageObJ foundOne = messageRepository.findOne(userMessageObJ.getId());
 
         return foundOne;
 
@@ -76,10 +75,10 @@ public class RestMessageController {
      * @return
      */
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public Iterable<UserMessage> listByPage(@RequestParam("page") Integer page,
-                                         @RequestParam("size") Integer size,
-                                         @RequestParam(value = "sortby", required = false) String sortby,
-                                         @RequestParam(value = "dir", required = false) Sort.Direction direction) {
+    public Iterable<UserMessageObJ> listByPage(@RequestParam("page") Integer page,
+                                               @RequestParam("size") Integer size,
+                                               @RequestParam(value = "sortby", required = false) String sortby,
+                                               @RequestParam(value = "dir", required = false) Sort.Direction direction) {
 
         log.debug(String.format("Begin listAll (page:%s, size:%s, sortby:%s, dir:%s):",page,size,sortby,direction));
 
@@ -94,7 +93,7 @@ public class RestMessageController {
         }
         Sort s = new Sort(direction, sortby);
         PageRequest pr = new PageRequest(page, size, s);
-        Iterable<UserMessage> found = messageRepository.findAll(pr);
+        Iterable<UserMessageObJ> found = messageRepository.findAll(pr);
         log.debug(String.format("End listAll: %s", found));
 
         return found;
@@ -105,23 +104,23 @@ public class RestMessageController {
      * @return
      */
     @RequestMapping(value = "listAll", method = RequestMethod.GET)
-    private Iterable<UserMessage> listAll() {
+    private Iterable<UserMessageObJ> listAll() {
 
         log.debug("List all messages" );
-        Iterable<UserMessage> foundAll = messageRepository.findAll();
+        Iterable<UserMessageObJ> foundAll = messageRepository.findAll();
         log.debug("messages found");
         return foundAll;
     }
     /**
      * Deletes user by their unique id
-     * @param userMessage
+     * @param userMessageObJ
      * @return
      */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-    private UserMessage delete(@RequestParam UserMessage userMessage) {
-        log.debug("deleting "+ userMessage.getId());
-        messageRepository.delete(userMessage);
-        UserMessage deletedOne = messageRepository.findOne(userMessage.getId());
+    private UserMessageObJ delete(@RequestParam UserMessageObJ userMessageObJ) {
+        log.debug("deleting "+ userMessageObJ.getId());
+        messageRepository.delete(userMessageObJ);
+        UserMessageObJ deletedOne = messageRepository.findOne(userMessageObJ.getId());
         log.debug("");
         return deletedOne;
     }

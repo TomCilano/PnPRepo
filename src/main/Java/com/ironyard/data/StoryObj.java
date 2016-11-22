@@ -10,19 +10,19 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
- * Created by Tom on 11/14/16.
+ * Created by Tom on 11/15/16.
  */
 @Entity
-public class UserMessage {
-    @Size(max = 1337)
-    private String message;
+public class StoryObj {
+    @Size(max = 300000)
+    private String story;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @DateTimeFormat
     private Date date;
 
-    public UserMessage() {
+    public StoryObj() {
     }
 
     public Date getDate() {
@@ -33,12 +33,12 @@ public class UserMessage {
         this.date = date;
     }
 
-    public String getMessage() {
-        return message;
+    public String getStory() {
+        return story;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setStory(String story) {
+        this.story = story;
     }
 
     public long getId() {

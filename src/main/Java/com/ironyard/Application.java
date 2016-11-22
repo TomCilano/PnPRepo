@@ -110,8 +110,8 @@ public class Application {
     @Bean
     public ApiInfo apiInfoStory(){
         return new ApiInfoBuilder()
-                .title("Story API")
-                .description("This is where you can perform CRUD operations on 'Story' by id ------->Here is a testing token:  hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
+                .title("StoryObj API")
+                .description("This is where you can perform CRUD operations on 'StoryObj' by id ------->Here is a testing token:  hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
                 .contact("TomCilano")
                 .license("")
                 .build();
