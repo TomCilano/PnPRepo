@@ -41,9 +41,8 @@ public class RestSecurity implements javax.servlet.Filter {
         if(authorized){
             chain.doFilter(request, response);
         }else{
-            // tell them NO!
             res.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            res.getWriter().println("<html><body><p>No.. No..</p></body></html>");
+            res.getWriter().println("<html><body><p>Nope</p></body></html>");
         }
 
 

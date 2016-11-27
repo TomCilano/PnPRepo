@@ -3,8 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>test</groupId>
     <artifactId>spring</artifactId>
-    <packaging>pom</packaging>
-
+    <packaging>jar</packaging>
     <!-- we are extending from this project POM which means we get
      everything that this pom has (inheritance) -->
     <parent>
