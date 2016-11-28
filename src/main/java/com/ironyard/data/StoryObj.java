@@ -1,13 +1,11 @@
 package com.ironyard.data;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 /**
  * Created by Tom on 11/15/16.

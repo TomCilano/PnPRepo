@@ -26,22 +26,30 @@ public class RestStoryController {
     @Autowired
     private StoryRepository storyRepository;
 
+    /**
+     * Saves t
+     * @param storyObj
+     * @return
+     */
     @RequestMapping(value = "/save_story", method = RequestMethod.POST)
     private StoryObj save(@RequestBody StoryObj storyObj) {
 
         Date date = new Date();
         log.debug("creating a StoryObj...*");
+        storyRepository.save(storyObj);
         StoryObj foundOne = storyRepository.findOne(storyObj.getId());
         foundOne.setDate(sdf.format(date));
         log.debug("Saving StoryObj with sdf date format*");
         storyRepository.save(foundOne);
-        //    }
-
         log.debug("user message saved.");
         return foundOne;
     }
 
-
+    /**
+     * Get a StoryObj by it's Id
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "get{id}", method = RequestMethod.GET)
     private StoryObj get(@PathVariable long id) {
         log.debug("getting message by id# " + id);
@@ -51,7 +59,7 @@ public class RestStoryController {
     }
 
     /**
-     * edits a storyObj, updates the date
+     * Edits a storyObj, updates the date
      * @param storyObj
      * @return
      */
@@ -66,6 +74,14 @@ public class RestStoryController {
         return foundOne;
     }
 
+    /**
+     * Paginated list.
+     * @param page
+     * @param size
+     * @param sortby
+     * @param direction
+     * @return
+     */
     @RequestMapping(value = "listPageSize", method = RequestMethod.GET)
     public Iterable<StoryObj> listByPage(@RequestParam("page") Integer page,
                                          @RequestParam("size") Integer size,
@@ -105,6 +121,11 @@ public class RestStoryController {
         return foundAll;
     }
 
+    /**
+     * Deletes a Stoy by it's Id
+     * @param storyObj
+     * @return
+     */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
     private StoryObj delete(@RequestParam StoryObj storyObj) {
         storyRepository.delete(storyObj);

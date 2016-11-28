@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class UserInformation {
     private String userClass;
     private int level;
-    private String backround;
+    private String background;
     private String faction;
     private String race;
     private String alignment;
@@ -40,12 +40,12 @@ public class UserInformation {
         this.level = level;
     }
 
-    public String getBackround() {
-        return backround;
+    public String getBackground() {
+        return background;
     }
 
-    public void setBackround(String backround) {
-        this.backround = backround;
+    public void setBackground(String background) {
+        this.background = background;
     }
 
     public String getFaction() {

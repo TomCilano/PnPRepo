@@ -79,13 +79,12 @@ public class RestUserController {
     }
 
     /**
-     * Lists all serObjs
+     * Lists all UserObjs
      *
      * @return
      */
     @RequestMapping(value = "list", method = RequestMethod.GET)
     private Iterable<UserObj> listAll() {
-
         log.debug("List all users");
         Iterable<UserObj> foundAll = userRepository.findAll();
         log.debug("users found");
