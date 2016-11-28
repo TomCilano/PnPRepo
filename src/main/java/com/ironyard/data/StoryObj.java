@@ -16,20 +16,19 @@ import java.util.Date;
 public class StoryObj {
     @Size(max = 300000)
     private String story;
+    private String date;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @DateTimeFormat
-    private Date date;
 
     public StoryObj() {
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

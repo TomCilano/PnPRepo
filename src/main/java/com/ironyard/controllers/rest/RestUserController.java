@@ -53,8 +53,8 @@ public class RestUserController {
      * @param aUserObj
      * @return
      */
-    @RequestMapping(value = "update", method = RequestMethod.PUT)
-    private UserObj update(@RequestParam UserObj aUserObj) {
+    @RequestMapping(value = "updateUserObJById", method = RequestMethod.PUT)
+    private UserObj update(@RequestBody UserObj aUserObj) {
         log.debug("Updating " + aUserObj);
         userRepository.findOne(aUserObj.getId());
         userRepository.save(aUserObj);
@@ -71,7 +71,7 @@ public class RestUserController {
      */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
     private UserObj delete(@RequestParam UserObj aUserObjId) {
-        log.debug("deleting "+ aUserObjId);
+        log.debug("deleting " + aUserObjId);
         userRepository.delete(aUserObjId);
         UserObj deletedOne = userRepository.findOne(aUserObjId.getId());
         log.debug(aUserObjId + " successfully deleted!");
@@ -80,12 +80,13 @@ public class RestUserController {
 
     /**
      * Lists all serObjs
+     *
      * @return
      */
     @RequestMapping(value = "list", method = RequestMethod.GET)
     private Iterable<UserObj> listAll() {
 
-        log.debug("List all users" );
+        log.debug("List all users");
         Iterable<UserObj> foundAll = userRepository.findAll();
         log.debug("users found");
         return foundAll;

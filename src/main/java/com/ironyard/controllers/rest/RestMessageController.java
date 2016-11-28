@@ -37,24 +37,14 @@ public class RestMessageController {
      */
     @RequestMapping(value ="/saveMessage", method = RequestMethod.POST)
     private UserMessageObJ save(@RequestBody UserMessageObJ aUserMessageObJ){
+        Date date = new Date();
         log.debug("creating a user message...");
-
         messageRepository.save(aUserMessageObJ);
         UserMessageObJ foundOne = messageRepository.findOne(aUserMessageObJ.getId());
-
-        /*
-         *public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyy hh:mm");
-
-        Date date = new Date();
-        System.out.println(sdf.format(date));
-
-         */
-//
-//        Date date = new Date();
-//
-//        foundOne.setDate(sdf.format(date));
-
-        log.debug("user message saved.");
+        log.debug("Setting current date...");
+        foundOne.setDate(sdf.format(date));
+        messageRepository.save(foundOne);
+        log.debug("user message saved, date set.");
         return foundOne;
     }
 
@@ -78,10 +68,11 @@ public class RestMessageController {
      */
     @RequestMapping(value = "edit", method = RequestMethod.PUT)
     private UserMessageObJ edit(@RequestBody UserMessageObJ userMessageObJ){
-
+        Date date = new Date();
         messageRepository.save(userMessageObJ);
-
         UserMessageObJ foundOne = messageRepository.findOne(userMessageObJ.getId());
+        foundOne.setDate("Date Edited: " + sdf.format(date));
+        messageRepository.save(foundOne);
 
         return foundOne;
 

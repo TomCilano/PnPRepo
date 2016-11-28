@@ -18,21 +18,19 @@ import java.util.Date;
 public class UserMessageObJ {
     @Size(max = 1337)
     private String message;
+    private String  date;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    //  "date": "2016-11-22T20:49:12.637Z"
-    @JsonFormat(pattern = "yyyy/mm/ddT7Ihh:ss")
-    private Date date;
 
     public UserMessageObJ() {
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

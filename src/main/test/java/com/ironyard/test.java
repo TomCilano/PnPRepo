@@ -10,11 +10,12 @@ import java.util.Date;
 public class test {
 
     public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyy hh:mm");
+
+
     public static void main(String[] args) {
 
-        Date date = new Date();
-        System.out.println(sdf.format(date));
-
+//        Date date = new Date();
+//        System.out.println(sdf.format(date));
 
     }
 }
