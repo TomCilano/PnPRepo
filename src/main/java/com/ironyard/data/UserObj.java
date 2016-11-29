@@ -11,14 +11,6 @@ import java.util.Set;
 public class UserObj {
     private String userName;
     private String password;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-
-    /**
-     * User Attributes (Many to Many relationships)
-     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Attack> attackSet;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -39,7 +31,9 @@ public class UserObj {
     private Set<Tenet> tenetsSet;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserInformation> userInformationSet;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
 
 
@@ -47,9 +41,6 @@ public class UserObj {
 
     }
 
-    /**
-     * Getters and Setters
-     */
     public String getUserName() {
         return userName;
     }

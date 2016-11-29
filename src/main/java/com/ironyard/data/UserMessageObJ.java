@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Entity
 public class UserMessageObJ {
-    @Size(max = 1337)
+    @Size(max = 10000)
     private String message;
     private String  date;
     @Id

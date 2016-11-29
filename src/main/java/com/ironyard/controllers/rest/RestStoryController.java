@@ -14,25 +14,27 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Tom on 11/15/16.
+ * Created by Tom on 11/18/16.
  */
 @RestController
 @RequestMapping(path = "/rest/story")
 public class RestStoryController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
-    public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyy hh:mm:ss");
+    public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm z");
 
 
     @Autowired
     private StoryRepository storyRepository;
 
     /**
-     * Saves t
+     * This method takes in a StoryObj and save it to the database.
+     * Setting both the Id and the Date attributes automatically.
+     *
      * @param storyObj
-     * @return
+     * @return A saved StoryObj
      */
     @RequestMapping(value = "/save_story", method = RequestMethod.POST)
-    private StoryObj save(@RequestBody StoryObj storyObj) {
+    public StoryObj save(@RequestBody StoryObj storyObj) {
 
         Date date = new Date();
         log.debug("creating a StoryObj...*");
@@ -41,46 +43,63 @@ public class RestStoryController {
         foundOne.setDate(sdf.format(date));
         log.debug("Saving StoryObj with sdf date format*");
         storyRepository.save(foundOne);
-        log.debug("user message saved.");
+        log.debug("User message saved.");
+        log.debug("POST request 'save' completed successfully");
         return foundOne;
     }
 
     /**
-     * Get a StoryObj by it's Id
+     * This method gets a particular StoryObj by it's Id
+     *
      * @param id
-     * @return
+     * @return A StoryObj
      */
     @RequestMapping(value = "get{id}", method = RequestMethod.GET)
-    private StoryObj get(@PathVariable long id) {
-        log.debug("getting message by id# " + id);
+    public StoryObj get(@PathVariable long id) {
+        log.debug("Getting message by id# " + id);
         StoryObj found = storyRepository.findOne(id);
-        log.debug("got story with id#" + id);
+        log.debug("Got story with Id# " + id);
+        log.debug("GET request 'get' completed successfully");
+
         return found;
     }
 
     /**
-     * Edits a storyObj, updates the date
+     * This method edits a StoryObj. It requires the user of the API to replace the
+     * Id of the Swagger model with the Id of the StoryObj they intend to update. Altering
+     * the Date String is futile as it is hard-set in the edit() to the local time of the server
+     * it's running on.
+     *
      * @param storyObj
-     * @return
+     * @return An edited StoryObj, with an updated date as well as the reference to the fact
+     * the message has been edited
      */
     @RequestMapping(value = "edit", method = RequestMethod.PUT)
-    private StoryObj edit(@RequestBody StoryObj storyObj) {
+    public StoryObj edit(@RequestBody StoryObj storyObj) {
         log.debug("Instantiating date*");
         Date date = new Date();
         log.debug("Finding StoryObj by Id*");
         StoryObj foundOne = storyRepository.findOne(storyObj.getId());
         foundOne.setDate("Edited on: " + sdf.format(date));
         storyRepository.save(foundOne);
+        log.debug("Saved a StoryObj ");
+        log.debug("PUT request 'edit' completed successfully");
+
         return foundOne;
     }
 
     /**
-     * Paginated list.
+     * Lists paginated StoryObj. It requires two parameters, page number and size.
+     * There are two additional parameters: 'sortby', which allows the user to choose a
+     * StoryObj attribute from which to sort (the default being its generated Id,)
+     * and 'dir', which allows the user to sort the list in either an ascending or descending
+     * direction(which by default is det to descending.)
+     *
      * @param page
      * @param size
      * @param sortby
      * @param direction
-     * @return
+     * @return A paginated list of all StoryObj with respect the given parameters.
      */
     @RequestMapping(value = "listPageSize", method = RequestMethod.GET)
     public Iterable<StoryObj> listByPage(@RequestParam("page") Integer page,
@@ -103,33 +122,40 @@ public class RestStoryController {
         PageRequest pr = new PageRequest(page, size, s);
         Iterable<StoryObj> found = storyRepository.findAll(pr);
         log.debug(String.format("End listAll: %s", found));
+        log.debug("GET request 'listByPage' completed successfully");
 
         return found;
     }
 
     /**
-     * List all Stories
+     * This method simply list all StoryObj currently persisted to the database.
      *
-     * @return
+     * @return All StoryObj
      */
     @RequestMapping(value = "listAll", method = RequestMethod.GET)
-    private Iterable<StoryObj> listAll() {
+    public Iterable<StoryObj> listAll() {
 
-        log.debug("List all messages");
+        log.debug("Listing all messages");
         Iterable<StoryObj> foundAll = storyRepository.findAll();
-        log.debug("messages found");
+        log.debug("Messages found");
+        log.debug("GET request 'listAll' completed successfully");
+
         return foundAll;
     }
 
     /**
-     * Deletes a Stoy by it's Id
+     * This method finds a StoryObj by it's unique Id and deletes it from the
+     * database.
      * @param storyObj
-     * @return
+     * @return null[]
      */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-    private StoryObj delete(@RequestParam StoryObj storyObj) {
+    public StoryObj delete(@RequestParam StoryObj storyObj) {
+        log.debug("Deleting a user by Id# " + storyObj.getId());
         storyRepository.delete(storyObj);
+        log.debug("User with Id# " + storyObj.getId()+ " deleted");
         StoryObj deletedOne = storyRepository.findOne(storyObj.getId());
+        log.debug("DELETE request 'delete' completed successfully");
         return deletedOne;
     }
 }

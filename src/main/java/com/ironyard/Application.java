@@ -11,7 +11,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.time.LocalDate;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static springfox.documentation.builders.PathSelectors.regex;
@@ -51,8 +50,9 @@ public class Application {
     public ApiInfo apiInfoUser() {
         return new ApiInfoBuilder()
                 .title("UserObj API")
-                .description("This is where you can access the users data model and perform CRUD operations on them." + "\n" +
-                        "test token = hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
+                .description("")
+
+
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
@@ -83,13 +83,23 @@ public class Application {
     public ApiInfo apiInfoMessage() {
         return new ApiInfoBuilder()
                 .title("Message API")
-                .description("This is where you can perform CRUD operations on  'messages' by Id------->Here is a testing token:  hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
+                .description("This is where you can perform CRUD operations on  'messages' by Id. In generating a message it use the" +
+                        " local server Date and time. When you update a message " +
+                        "it's date will include the date modified be label as Edited." +
+                        "<br> The Json model is simple \n {\n" +
+                        "  \"date\": \"string\",\n" +
+                        "  \"id\": 0,\n" +
+                        "  \"story\": \"string\"\n" +
+                        "}"+"     It is Important for the user to follow certain standards when using this API." +
+                        "1: When ")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
-                .licenseUrl("")
-                .version(".1")
+                .version(".01" +
+                    "}")
+                .termsOfServiceUrl("http://localhost:8080/user.jsp")
                 .build();
+
 
     }
     @Bean

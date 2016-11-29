@@ -19,13 +19,14 @@ public class RestUserController {
     private UserRepository userRepository;
 
     /**
-     * Saves a userObj
+     * This method takes in a UserObj and save it to the database.
+     * Setting the Id automatically.
      *
      * @param aUserObj
-     * @return
+     * @return A saved UserObj
      */
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    private UserObj save(@RequestBody UserObj aUserObj) {
+    public UserObj save(@RequestBody UserObj aUserObj) {
         log.debug("Initializing Save" + aUserObj);
         userRepository.save(aUserObj);
         UserObj foundOne = userRepository.findOne(aUserObj.getId());
@@ -34,13 +35,13 @@ public class RestUserController {
     }
 
     /**
-     * Get a user by it's unique Id
+     * This method gets a particular UserObj by it's Id
      *
      * @param id
-     * @return
+     * @return A UserObj
      */
     @RequestMapping(value = "get{id}", method = RequestMethod.GET)
-    private UserObj show(@PathVariable Long id) {
+    public UserObj show(@PathVariable Long id) {
         log.debug("Getting user with id # " + id);
         UserObj foundOne = userRepository.findOne(id);
         log.debug("Got user with id # " + id);
@@ -48,13 +49,27 @@ public class RestUserController {
     }
 
     /**
-     * Update a user
+     * Lists all UserObjs
+     *
+     * @return A list of all UserObjs
+     */
+    @RequestMapping(value = "list", method = RequestMethod.GET)
+    public Iterable<UserObj> listAll() {
+        log.debug("List all users");
+        Iterable<UserObj> foundAll = userRepository.findAll();
+        log.debug("Users found");
+        return foundAll;
+    }
+
+    /**
+     * This method updates a UserObj. It requires the user of the API to replace the
+     * Id of the Swagger model with the Id of the StoryObj they intend to update.
      *
      * @param aUserObj
-     * @return
+     * @return An edited UserObj
      */
     @RequestMapping(value = "updateUserObJById", method = RequestMethod.PUT)
-    private UserObj update(@RequestBody UserObj aUserObj) {
+    public UserObj update(@RequestBody UserObj aUserObj) {
         log.debug("Updating " + aUserObj);
         userRepository.findOne(aUserObj.getId());
         userRepository.save(aUserObj);
@@ -70,24 +85,13 @@ public class RestUserController {
      * @return
      */
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-    private UserObj delete(@RequestParam UserObj aUserObjId) {
-        log.debug("deleting " + aUserObjId);
+    public UserObj delete(@RequestParam UserObj aUserObjId) {
+        log.debug("Deleting " + aUserObjId);
         userRepository.delete(aUserObjId);
         UserObj deletedOne = userRepository.findOne(aUserObjId.getId());
-        log.debug(aUserObjId + " successfully deleted!");
-        return deletedOne;
-    }
+        log.debug(aUserObjId + "with Id# "+" deleted!");
+        log.debug("DELETE request 'delete' completed successfully");
 
-    /**
-     * Lists all UserObjs
-     *
-     * @return
-     */
-    @RequestMapping(value = "list", method = RequestMethod.GET)
-    private Iterable<UserObj> listAll() {
-        log.debug("List all users");
-        Iterable<UserObj> foundAll = userRepository.findAll();
-        log.debug("users found");
-        return foundAll;
+        return deletedOne;
     }
 }

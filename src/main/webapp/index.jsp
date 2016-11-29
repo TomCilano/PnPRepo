@@ -3,28 +3,8 @@
 <%@ page isELIgnored="false" %>
 <html>
 <body>
-<h2>
-TEST
+<table border="1"><tr><th>attackSet</th>
+    <td><ul><table border="1"><tr><th>attacks</th><td>string</td></tr><tr><th>id</th><td>0</td></tr></table></ul></td></tr><tr><th>currentStateSet</th><td><ul><table border="1"><tr><th>armorClass</th><td>0</td></tr><tr><th>currentHitPoints</th><td>0</td></tr><tr><th>hitDice</th><td>0</td></tr><tr><th>id</th><td>0</td></tr><tr><th>initiative</th><td>0</td></tr><tr><th>maxHitPoints</th><td>0</td></tr><tr><th>speed</th><td>0</td></tr></table></ul></td></tr><tr><th>equipmentSet</th><td><ul><table border="1"><tr><th>equipment</th><td>string</td></tr><tr><th>gp</th><td>0</td></tr><tr><th>id</th><td>0</td></tr></table></ul></td></tr><tr><th>featureSet</th><td><ul><table border="1"><tr><th>features</th><td>string</td></tr><tr><th>id</th><td>0</td></tr></table></ul></td></tr><tr><th>id</th><td>0</td></tr><tr><th>mainStatSet</th><td><ul><table border="1"><tr><th>charisma</th><td>0</td></tr><tr><th>constitution</th><td>0</td></tr><tr><th>dexterity</th><td>0</td></tr><tr><th>id</th><td>0</td></tr><tr><th>intelligence</th><td>0</td></tr><tr><th>strength</th><td>0</td></tr><tr><th>wisdom</th><td>0</td></tr></table></ul></td></tr><tr><th>modifierSet</th><td><ul><table border="1"><tr><th>id</th><td>0</td></tr><tr><th>inspiration</th><td>0</td></tr><tr><th>proficiency</th><td>0</td></tr><tr><th>savingChar</th><td>0</td></tr><tr><th>savingCon</th><td>0</td></tr><tr><th>savingDex</th><td>0</td></tr><tr><th>savingInt</th><td>0</td></tr><tr><th>savingStr</th><td>0</td></tr><tr><th>savingWis</th><td>0</td></tr></table></ul></td></tr><tr><th>password</th><td>string</td></tr><tr><th>skills</th><td><ul><table border="1"><tr><th>description</th><td>string</td></tr><tr><th>id</th><td>0</td></tr><tr><th>value</th><td>string</td></tr></table></ul></td></tr><tr><th>spellSet</th><td><ul><table border="1"><tr><th>description</th><td>string</td></tr><tr><th>id</th><td>0</td></tr></table></ul></td></tr><tr><th>tenetsSet</th><td><ul><table border="1"><tr><th>bonds</th><td>string</td></tr><tr><th>flaws</th><td>string</td></tr><tr><th>id</th><td>0</td></tr><tr><th>ideals</th><td>string</td></tr><tr><th>personalityTraits</th><td>string</td></tr></table></ul></td></tr><tr><th>userInformationSet</th><td><ul><table border="1"><tr><th>alignment</th><td>string</td></tr><tr><th>background</th><td>string</td></tr><tr><th>experience</th><td>0</td></tr><tr><th>faction</th><td>string</td></tr><tr><th>id</th><td>0</td></tr><tr><th>level</th><td>0</td></tr><tr><th>race</th><td>string</td></tr><tr><th>userClass</th><td>string</td></tr></table></ul></td></tr><tr><th>userName</th><td>string</td></tr></table>
 
-
-</h2>
-<div class="row marketing">
-    <div class="col-lg-6">
-        <h4></h4>
-
-        <p/>
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th>UserName</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-
-    </div>
 </body>
 </html>
