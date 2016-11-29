@@ -30,16 +30,16 @@ public class Application {
 
 
     @Bean
-    public Docket userApi() {
+    public Docket aUserApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("user-api")
-                .apiInfo(apiInfoUser())
+                .groupName("aUser-api")
+                .apiInfo(apiInfoAUser())
                 .select()
-                .paths(regex("/rest/user.*"))
+                .paths(regex("/rest/aUser.*"))
                 .build().globalOperationParameters(
                         newArrayList(new ParameterBuilder()
                                 .name("x-authorization-key")
-                                .description("API Authorization Key")
+                                .description("API Authorization Token")
                                 .modelRef(new ModelRef("string"))
                                 .parameterType("header")
                                 .required(true)
@@ -47,10 +47,16 @@ public class Application {
     }
 
     @Bean
-    public ApiInfo apiInfoUser() {
+    public ApiInfo apiInfoAUser() {
         return new ApiInfoBuilder()
-                .title("UserObj API")
-                .description("")
+                .title("AUserObj API")
+                .description("<div> This is the UserObj API. Here you may perform CRUD operation on User Objects" +
+                        "<div> The User Object is a complex data model that has numerous attributes.<div> To see the UserObj Model in a table click" +
+                        " <a href=\"user.jsp\">HERE</a>\n<div> On that page there is also a link to the raw Json model. Though it can be " +
+                        "found below in controllers as well." +
+                        "<div> Some points about this controller" +
+                        " "+
+                        "<div>• If you are going to update  ")
 
 
                 .termsOfServiceUrl("n/a")
@@ -71,7 +77,7 @@ public class Application {
                 .build().globalOperationParameters(
                         newArrayList(new ParameterBuilder()
                                 .name("x-authorization-key")
-                                .description("API Authorization Key")
+                                .description("API Authorization Token")
                                 .modelRef(new ModelRef("string"))
                                 .parameterType("header")
                                 .required(true)
@@ -83,15 +89,7 @@ public class Application {
     public ApiInfo apiInfoMessage() {
         return new ApiInfoBuilder()
                 .title("Message API")
-                .description("This is where you can perform CRUD operations on  'messages' by Id. In generating a message it use the" +
-                        " local server Date and time. When you update a message " +
-                        "it's date will include the date modified be label as Edited." +
-                        "<br> The Json model is simple \n {\n" +
-                        "  \"date\": \"string\",\n" +
-                        "  \"id\": 0,\n" +
-                        "  \"story\": \"string\"\n" +
-                        "}"+"     It is Important for the user to follow certain standards when using this API." +
-                        "1: When ")
+                .description("")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
@@ -112,7 +110,7 @@ public class Application {
                 .build().globalOperationParameters(
                         newArrayList(new ParameterBuilder()
                                 .name("x-authorization-key")
-                                .description("API Authorization Key")
+                                .description("API Authorization Token")
                                 .modelRef(new ModelRef("string"))
                                 .parameterType("header")
                                 .required(true)

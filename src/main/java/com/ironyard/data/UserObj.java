@@ -9,6 +9,9 @@ import java.util.Set;
  */
 @Entity
 public class UserObj {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String userName;
     private String password;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -31,14 +34,20 @@ public class UserObj {
     private Set<Tenet> tenetsSet;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserInformation> userInformationSet;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserMessageObJ> userMessageObJSet;
 
 
     public UserObj() {
 
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -55,14 +64,6 @@ public class UserObj {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Set<Attack> getAttackSet() {
@@ -143,5 +144,13 @@ public class UserObj {
 
     public void setUserInformationSet(Set<UserInformation> userInformationSet) {
         this.userInformationSet = userInformationSet;
+    }
+
+    public Set<UserMessageObJ> getUserMessageObJSet() {
+        return userMessageObJSet;
+    }
+
+    public void setUserMessageObJSet(Set<UserMessageObJ> userMessageObJSet) {
+        this.userMessageObJSet = userMessageObJSet;
     }
 }

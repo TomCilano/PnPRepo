@@ -44,7 +44,7 @@ public class RestMessageController {
         foundOne.setDate(sdf.format(date));
         messageRepository.save(foundOne);
         log.debug("userMessageObj saved with Id# "+ foundOne.getId()+ ", date set to "+ foundOne.getDate());
-        log.debug("POST request completed successfully");
+        log.debug("POST request 'save' completed successfully");
         return foundOne;
     }
 
@@ -58,9 +58,8 @@ public class RestMessageController {
     public UserMessageObJ get(@PathVariable long id) {
         log.debug("Getting message by Id # " + id);
         UserMessageObJ found = messageRepository.findOne(id);
-        log.debug("Retrieved Id# " + id);
+        log.debug("Retrieved UserMessageObJ with Id# " + id);
         log.debug("GET request 'get' completed successfully");
-
         return found;
     }
 
@@ -95,7 +94,7 @@ public class RestMessageController {
      * There are two additional parameters: 'sortby', which allows the user to choose a
      * UserMessageObj attribute from which to sort (the default being its generated Id,)
      * and 'dir', which allows the user to sort the list in either an ascending or descending
-     * direction(which by default is det to descending.)
+     * direction(which by default is set to descending.)
      *
      * @param page
      * @param size
@@ -115,7 +114,6 @@ public class RestMessageController {
         if (sortby == null) {
             sortby = "id";
         }
-
         // DEFAULT Sort direction
         if (direction == null) {
             direction = Sort.Direction.DESC;
@@ -127,7 +125,6 @@ public class RestMessageController {
         log.debug("GET request 'listByPage' completed successfully");
         return found;
     }
-
     /**
      * This method simply list all UserMessageObJs currently persisted to the database.
      *
