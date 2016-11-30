@@ -55,10 +55,7 @@ public class Application {
                         " <a href=\"user.jsp\">HERE</a>\n<div> On that page there is also a link to the raw Json model. Though it can be " +
                         "found below in controllers as well." +
                         "<div> Some points about this controller" +
-                        " "+
-                        "<div>• If you are going to update  ")
-
-
+                        "<div> If you are going to update  ")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")

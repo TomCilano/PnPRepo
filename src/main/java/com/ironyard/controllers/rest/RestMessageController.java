@@ -23,6 +23,7 @@ import java.util.Date;
 public class RestMessageController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm z");
+    public Date date = new Date();
 
     @Autowired
     private MessageRepository messageRepository;
@@ -36,7 +37,6 @@ public class RestMessageController {
      */
     @RequestMapping(value = "/save_Message", method = RequestMethod.POST)
     private UserMessageObJ save(@RequestBody UserMessageObJ aUserMessageObJ) {
-        Date date = new Date();
         log.debug("Creating a new userMessageObj");
         messageRepository.save(aUserMessageObJ);
         UserMessageObJ foundOne = messageRepository.findOne(aUserMessageObJ.getId());
@@ -75,7 +75,6 @@ public class RestMessageController {
      */
     @RequestMapping(value = "edit", method = RequestMethod.PUT)
     public UserMessageObJ edit(@RequestBody UserMessageObJ userMessageObJ) {
-        Date date = new Date();
         log.debug("Saving userMessageObj");
         messageRepository.save(userMessageObJ);
         UserMessageObJ foundOne = messageRepository.findOne(userMessageObJ.getId());

@@ -18,7 +18,7 @@
 <center><b>User Object Json</b></center>
 <center>In an un-editable html table</center>
 <br>
-<center><img src="/img/UserJson.png"height="700" width="700 "></center>
+<center><img src="/img/UserObj.png"height="700" width="700 "></center>
 
 
 <br>

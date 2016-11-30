@@ -21,6 +21,7 @@ import java.util.Date;
 public class RestStoryController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     public static DateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm z");
+    Date date = new Date();
 
 
     @Autowired
@@ -36,7 +37,6 @@ public class RestStoryController {
     @RequestMapping(value = "/save_story", method = RequestMethod.POST)
     public StoryObj save(@RequestBody StoryObj storyObj) {
 
-        Date date = new Date();
         log.debug("creating a StoryObj...*");
         storyRepository.save(storyObj);
         StoryObj foundOne = storyRepository.findOne(storyObj.getId());
@@ -77,7 +77,6 @@ public class RestStoryController {
     @RequestMapping(value = "edit", method = RequestMethod.PUT)
     public StoryObj edit(@RequestBody StoryObj storyObj) {
         log.debug("Instantiating date*");
-        Date date = new Date();
         log.debug("Finding StoryObj by Id*");
         StoryObj foundOne = storyRepository.findOne(storyObj.getId());
         foundOne.setDate("Edited on: " + sdf.format(date));
