@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Feature {
 
-    private String features;
+    private String[] features;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -19,11 +19,11 @@ public class Feature {
     public Feature() {
     }
 
-    public String getFeatures() {
+    public String[] getFeatures() {
         return features;
     }
 
-    public void setFeatures(String features) {
+    public void setFeatures(String[] features) {
         this.features = features;
     }
 

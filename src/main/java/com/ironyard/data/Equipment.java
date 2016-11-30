@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Equipment {
     private int gp;
-    private String equipment;
+    private String[] equipment;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -27,11 +27,11 @@ public class Equipment {
         this.gp = gp;
     }
 
-    public String getEquipment() {
+    public String[] getEquipment() {
         return equipment;
     }
 
-    public void setEquipment(String equipment) {
+    public void setEquipment(String[] equipment) {
         this.equipment = equipment;
     }
 

@@ -50,12 +50,14 @@ public class Application {
     public ApiInfo apiInfoAUser() {
         return new ApiInfoBuilder()
                 .title("AUserObj API")
-                .description("<div> This is the UserObj API. Here you may perform CRUD operation on User Objects" +
+                .description("<div> This is the UserObj API. Here you may perform CRUD operations on User Objects" +
                         "<div> The User Object is a complex data model that has numerous attributes.<div> To see the UserObj Model in a table click" +
                         " <a href=\"user.jsp\">HERE</a>\n<div> On that page there is also a link to the raw Json model. Though it can be " +
                         "found below in controllers as well." +
-                        "<div> Some points about this controller" +
-                        "<div> If you are going to update  ")
+                        "<div><div> Some points about this controller" +
+                        "<div><div>1. Generate will create a UserObj with a generated name. Save will create a user with no generated values" +
+                        "<div>2. To update a user you must put the Id of the updated user into the the JSON model as well as any other updated values." +
+                        "<div>3. To delete a user you must enter in the Id of the userObj you intend to remove from the database.")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
@@ -86,19 +88,31 @@ public class Application {
     public ApiInfo apiInfoMessage() {
         return new ApiInfoBuilder()
                 .title("Message API")
-                .description("")
+                .description("This is the StoryObj API. Here you can perform CRUD operations on the storyObj, which " +
+                        "is a small data object consisting of three attributes." +
+                        "<div> The Json model is simply {\n" +
+                        "  \"date\": \"string\",\n" +
+                        "  \"id\": 0,\n" +
+                        "  \"message\": \"string\"\n" +
+                        "}" +
+                        "<div><div> Some points about this controller " +
+                        "<div>1. To update a you must put the Id of the updated user into the the JSON model." +
+                        "<div>2. Altering the Date String has no effect as it is hard-set in the save() and edit() " +
+                        "to the local time of the server it's running on." +
+                        "<div>3. The edit will add to the date a reference to the editing")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
                 .version(".01" +
-                    "}")
+                        "}")
                 .termsOfServiceUrl("http://localhost:8080/user.jsp")
                 .build();
 
 
     }
+
     @Bean
-    public Docket storyApi(){
+    public Docket storyApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("story api")
                 .apiInfo(apiInfoStory())
@@ -114,14 +128,24 @@ public class Application {
                                 .build()));
 
     }
+
     @Bean
-    public ApiInfo apiInfoStory(){
+    public ApiInfo apiInfoStory() {
         return new ApiInfoBuilder()
                 .title("StoryObj API")
-                .description("This is where you can perform CRUD operations on 'StoryObj' by id ------->Here is a testing token:  hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z")
-                .contact("TomCilano")
-                .license("")
-                .build();
+                .description("This is the StoryObj API. Here you can perform CRUD operations on the storyObj, which " +
+                        "is a small data object consisting of three attributes." +
+                        "<div> The Json model is simply {\n" +
+                        "  \"date\": \"string\",\n" +
+                        "  \"id\": 0,\n" +
+                        "  \"story\": \"string\"\n" +
+                        "}" +
+                        "<div><div> Some points about this controller " +
+                        ("<div>1. To update a you must put the Id of the updated user into the the JSON model as well " +
+                                "as any other updated values."))
+                                .contact("TomCilano")
+                                .license("")
+                                .build();
 
     }
 }

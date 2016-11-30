@@ -10,21 +10,16 @@ import javax.persistence.Id;
  */
 @Entity
 public class Attack {
-    private String attacks;
+    private String[] attacks;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public Attack(String attacks) {
-        this.attacks = attacks;
-    }
-
-
-    public String getAttacks() {
+    public String[] getAttacks() {
         return attacks;
     }
 
-    public void setAttacks(String attacks) {
+    public void setAttacks(String[] attacks) {
         this.attacks = attacks;
     }
 

@@ -1,14 +1,12 @@
 package com.ironyard.data;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
-import java.util.Date;
+
 
 
 /**

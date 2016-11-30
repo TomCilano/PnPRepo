@@ -10,20 +10,16 @@ import javax.persistence.Id;
  */
 @Entity
 public class Spell {
-    private String description;
+    private String[] description;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public Spell(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
+    public String[] getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String[] description) {
         this.description = description;
     }
 
