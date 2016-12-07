@@ -50,9 +50,11 @@ public class Application {
     public ApiInfo apiInfoAUser() {
         return new ApiInfoBuilder()
                 .title("AUserObj API")
-                .description("<div> This is the UserObj API. Here you may perform CRUD operations on User Objects" +
-                        "<div> The User Object is a complex data model that has numerous attributes.<div> To see the UserObj Model in a table click" +
-                        " <a href=\"user.jsp\">HERE</a>\n<div> On that page there is also a link to the raw Json model. Though it can be " +
+                .description("<div> This is the UserObj API. Here you may perform CRUD operations on User Objects:" +
+                        "<div> The User Object is a complex data model that has numerous attributes." +
+                        "<div> To see the UserObj Model in a table click" +
+                        " <a href=\"user.jsp\">HERE</a>\n" +
+                        "<div> On that page there is also a link to the raw Json model. Though it can be " +
                         "found below in controllers as well." +
                         "<div><div> Some points about this controller" +
                         "<div><div>1. Generate will create a UserObj with a generated name. Save will create a user with no generated values" +
@@ -95,11 +97,17 @@ public class Application {
                         "  \"id\": 0,\n" +
                         "  \"message\": \"string\"\n" +
                         "}" +
-                        "<div><div> Some points about this controller " +
+                        "<div> " +
+                        "<div> Some points about this controller " +
                         "<div>1. To update a you must put the Id of the updated user into the the JSON model." +
                         "<div>2. Altering the Date String has no effect as it is hard-set in the save() and edit() " +
                         "to the local time of the server it's running on." +
-                        "<div>3. The edit will add to the date a reference to the editing")
+                        "<div>3. The edit will add to the date a reference to the editing" +
+                        "<div>4. Paginated lists require two parameters, page number and size. There are two additional and optional " +
+                        "parameters: 'sortby', which allows the user to choose a UserMessageObj attribute from which to sort " +
+                        "(the default being it's generated Id,)and 'dir', which allows the user to sort the list in either an" +
+                        " ascending or descending direction(which by default is set to descending.)" +
+                        "The meta-data will include informaton on the number of total ages after the model.")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
@@ -141,8 +149,16 @@ public class Application {
                         "  \"story\": \"string\"\n" +
                         "}" +
                         "<div><div> Some points about this controller " +
-                        ("<div>1. To update a you must put the Id of the updated user into the the JSON model as well " +
-                                "as any other updated values."))
+                        "<div>1. To update a you must put the Id of the updated user into the the " +
+                        "JSON model as well as any other updated values." +
+                        "<div 2.Altering the Date String has no effect as it is hard-set in the save() and edit() " +
+                        "to the local time of the server it's running on." +
+                        "<div>4. Paginated lists require two parameters, page number and size. There are two additional and optional " +
+                        "parameters: 'sortby', which allows the user to choose a StoryObj attribute from which to sort " +
+                        "(the default being it's generated Id,)and 'dir', which allows the user to sort the list in either an" +
+                        " ascending or descending direction(which by default is set to descending.)" +
+                        "The meta-data will include informaton on the number of total ages after the model." +
+                        "<div>5. This object has no relation to the UserObj.")
                                 .contact("TomCilano")
                                 .license("")
                                 .build();

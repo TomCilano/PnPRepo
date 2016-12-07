@@ -1,6 +1,9 @@
 package com.ironyard;
 
 
+import com.ironyard.generation.D20Gen;
+
+import static com.ironyard.generation.D20Gen.roll;
 import static com.ironyard.generation.NameGenerator.generateName;
 
 /**
@@ -10,10 +13,10 @@ public class NameGeneratorTest {
 
     public static void main (String[] args){
         for(int i = 1; i <= 10000; i ++)  {
-          String x = generateName();
-          System.out.println(i + " : " + x);
+            System.out.print(i+" : ");
+            roll();
+
         }
     }
-
 
 }

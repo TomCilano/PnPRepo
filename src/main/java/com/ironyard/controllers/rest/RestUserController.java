@@ -43,7 +43,7 @@ public class RestUserController {
         }
         userRepository.save(aUserObj);
         UserObj foundOne = userRepository.findOne(aUserObj.getId());
-        log.debug(aUserObj + "Save complete");
+        log.debug(aUserObj + " Save complete");
         return foundOne;
     }
 
@@ -104,7 +104,7 @@ public class RestUserController {
         log.debug("Deleting " + aUserObjId);
         userRepository.delete(aUserObjId);
         UserObj deletedOne = userRepository.findOne(aUserObjId.getId());
-        log.debug(aUserObjId + "with Id# " + " deleted");
+        log.debug(aUserObjId + "with Id# " + aUserObjId.getId() + " deleted");
         log.debug("DELETE request 'delete' completed successfully");
 
         return deletedOne;
@@ -122,7 +122,7 @@ public class RestUserController {
         log.debug("Generating a UserObj");
         userRepository.save(aUserObj);
         UserObj created = userRepository.findOne(aUserObj.getId());
-        log.debug("generating Username");
+        log.debug("Generating Username");
         String generatedName = generateName();
         aUserObj.setUserName(generatedName);
         log.debug("Iterating through UserMessageSet");

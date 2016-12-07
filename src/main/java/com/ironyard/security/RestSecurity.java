@@ -42,7 +42,7 @@ public class RestSecurity implements javax.servlet.Filter {
             chain.doFilter(request, response);
         }else{
             res.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            res.getWriter().println("<html><body><p>Nope</p></body></html>");
+            res.getWriter().println("<html><body><p>Please enter a Vaild API Token</p></body></html>");
         }
 
 

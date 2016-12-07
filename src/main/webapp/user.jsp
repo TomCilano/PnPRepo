@@ -10,7 +10,7 @@
 <head>
     <title>User Json Table</title>
 </head>
-<body>
+<body background="/img/grey.jpg">
 <center><a href="rawUserJson.jsp">Raw JSON Here </a></center>
 <center><a href="swagger-ui.html#/rest-user-controller">Back to API </a></center>
 

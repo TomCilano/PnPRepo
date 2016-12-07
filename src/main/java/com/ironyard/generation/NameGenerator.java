@@ -13,7 +13,7 @@ public class NameGenerator {
      */
     public static String generateName() {
            Random randomNumber = new Random();
-           String[] first = {"Ab", "Ra", "Dig", "Ae", "Kar", "Bar", "Ba", "Lo", "Tor", "Gu"};
+           String[] first = {"Ab", "Ra", "Dig", "Ae", "Kar", "Bar", "Ba", "Lo", "Tor", "Gu","Cal"};
            String[] second = {"ari", "uge", "cori", "cres", "mar", "zur", "ark", "sven"};
            String[] third = {"d", "ed", "ara", "arc", "es", "er", "der", "r",
                 "tron", "mea", "ure", "zur", "ed", "mara","","","","",""};
