@@ -59,7 +59,9 @@ public class Application {
                         "<div><div> Some points about this controller" +
                         "<div><div>1. Generate will create a UserObj with a generated name. Save will create a user with no generated values" +
                         "<div>2. To update a user you must put the Id of the updated user into the the JSON model as well as any other updated values." +
-                        "<div>3. To delete a user you must enter in the Id of the userObj you intend to remove from the database.")
+                        "<div>3. To delete a user you must enter in the Id of the userObj you intend to remove from the database." +
+                        "<div>4. Here is a token for testing, this will work on all of the controllers. if not please email me at tomcilano@gmail.com " +
+                        "and I'll generate another for you: hGsZ9J4kvxbBNRqGSEM7JtfDlSU/qh8Z ")
                 .termsOfServiceUrl("n/a")
                 .contact("Tom Cilano")
                 .license("Apache License Version 2.0")
